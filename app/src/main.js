@@ -16,40 +16,21 @@ fetch(URL)
   .catch((error) => console.error("FETCH ERROR:", error));
 
 function displayfortnite(data) {
-  const fortnite = data.data[0];
-
   const fortniteDiv = document.getElementById("fortnite");
   const fortniteName = document.getElementById("name");
 
-  const heading = document.createElement("h2");
-  heading.textContent = fortnite.name;
-  fortniteName.appendChild(heading);
+  data.data.forEach((fortnite) => {
+    const heading = document.createElement("h2");
+    heading.textContent = fortnite.name;
+    fortniteName.appendChild(heading);
 
-  const fortniteImage = document.createElement("img");
-  fortniteImage.src = fortnite.images.icon;
-  fortniteDiv.appendChild(fortniteImage);
-}
-/* async function getData() {
-  try {
-    const response = await fetch(URL);
-    const data = await response.json();
-    console.log(data);
-    document.getElementById("api-response").textContent = JSON.stringify(
-      data.data,
-      null,
-      2
-    );
-  } catch (error) {
-    console.log(error);
-  }
-}
+    const fortniteImage = document.createElement("img");
+    fortniteImage.src = fortnite.images.icon;
+    fortniteImage.alt = fortnite.name;
+    fortniteDiv.appendChild(fortniteImage);
 
-getData();
-
-async function getImage() {
-  const response = await fetch(URL);
-  const data = await response.json();
-  const imageUrl = data.data[0].images.icon;
-  document.getElementById("api-image").src = imageUrl;
+    const fortniteStats = document.createElement("p");
+    fortniteStats.textContent = `Rarity: ${fortnite.rarity.displayValue}`;
+    fortniteDiv.appendChild(fortniteStats);
+  });
 }
-getImage(); */
