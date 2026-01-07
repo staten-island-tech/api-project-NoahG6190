@@ -32,5 +32,15 @@ function displayfortnite(data) {
     const fortniteStats = document.createElement("p");
     fortniteStats.textContent = `Rarity: ${fortnite.rarity.displayValue}`;
     fortniteDiv.appendChild(fortniteStats);
+
+    const fortniteType = document.createElement("p");
+    fortniteType.textContent = `Type: ${fortnite.type.displayValue}`;
+    fortniteDiv.appendChild(fortniteType);
+
+    const fortniteDescription = document.createElement("p");
+    fortniteDescription.textContent = `Description: ${
+      fortnite.description || "No description available."
+    }`;
+    fortniteDiv.appendChild(fortniteDescription);
   });
 }
