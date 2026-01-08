@@ -17,30 +17,30 @@ fetch(URL)
 
 function displayfortnite(data) {
   const fortniteDiv = document.getElementById("fortnite");
-  const fortniteName = document.getElementById("name");
 
   data.data.forEach((fortnite) => {
-    const heading = document.createElement("h2");
-    heading.textContent = fortnite.name;
-    fortniteName.appendChild(heading);
+    fortniteDiv.innerHTML += `
+      <div class="w-64 bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+        <h2 class="text-lg font-semibold mb-2">${fortnite.name}</h2>
 
-    const fortniteImage = document.createElement("img");
-    fortniteImage.src = fortnite.images.icon;
-    fortniteImage.alt = fortnite.name;
-    fortniteDiv.appendChild(fortniteImage);
+        <img
+          src="${fortnite.images.icon}"
+          alt="${fortnite.name}"
+          class="w-32 h-32 object-contain mb-3"
+        />
 
-    const fortniteStats = document.createElement("p");
-    fortniteStats.textContent = `Rarity: ${fortnite.rarity.displayValue}`;
-    fortniteDiv.appendChild(fortniteStats);
+        <p class="text-sm text-gray-600">
+          Rarity: ${fortnite.rarity.displayValue}
+        </p>
 
-    const fortniteType = document.createElement("p");
-    fortniteType.textContent = `Type: ${fortnite.type.displayValue}`;
-    fortniteDiv.appendChild(fortniteType);
+        <p class="text-sm text-gray-600">
+          Type: ${fortnite.type.displayValue}
+        </p>
 
-    const fortniteDescription = document.createElement("p");
-    fortniteDescription.textContent = `Description: ${
-      fortnite.description || "No description available."
-    }`;
-    fortniteDiv.appendChild(fortniteDescription);
+        <p class="text-sm mt-2 p-2 border rounded bg-gray-100 text-gray-700">
+          ${fortnite.description || "No description available."}
+        </p>
+      </div>
+    `;
   });
 }
