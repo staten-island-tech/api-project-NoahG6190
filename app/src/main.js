@@ -26,26 +26,19 @@ function displayFortnite(data) {
     const description = item.description || "No description available.";
 
     html += `
-      <div class="w-64 bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center space-y-3">
+      <div class="w-64 bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center space-y-2">
         <h2 class="text-lg font-semibold">${name}</h2>
 
         ${
           image
-            ? `
-              <!-- FIXED IMAGE CONTAINER -->
-              <div class="w-32 h-32 flex items-center justify-center bg-gray-100 rounded">
-                <img
-                  src="${image}"
-                  alt="${name}"
-                  class="max-w-full max-h-full object-contain"
-                />
-              </div>
-            `
-            : `
-              <div class="w-32 h-32 flex items-center justify-center bg-gray-100 text-gray-400 rounded">
+            ? `<img
+                src="${image}"
+                alt="${name}"
+                class="w-32 h-32 object-contain bg-gray-100 rounded"
+              />`
+            : `<div class="w-32 h-32 flex items-center justify-center bg-gray-100 text-gray-400 rounded">
                 No Image
-              </div>
-            `
+              </div>`
         }
 
         <p class="text-sm text-gray-600">Rarity: ${rarity}</p>
